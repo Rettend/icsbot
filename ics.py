@@ -3,8 +3,6 @@ from time import gmtime
 from discord.ext import commands
 from functions import edit_json,read_json
 #-------------------DATA---------------------
-
-version = "0.9.0"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='-', description=None)
 bot.remove_command("help")
