@@ -1,19 +1,17 @@
 import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, traceback, os, sys, math, asyncpg
 from time import gmtime
 from discord.ext import commands
-from functions import edit_json,read_json
+
 #-------------------DATA---------------------
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='-', description=None)
 bot.remove_command("help")
-startup_extensions = ["YouTube"]
 message = discord.Message
 server = discord.Server
 member = discord.Member
 user = discord.User
 Imox = ["365173881952272384"]
 permissions = discord.Permissions
-PRserver = "PissRocket"
 underworking = ":warning: **Meh Boi, this command hasn't finished. Please wait until it's got.** :warning:"
 """timer = time.strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())"""
 #--------------------------------------------
