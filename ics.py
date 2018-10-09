@@ -597,7 +597,7 @@ async def on_message(message):
                             ':white_small_square: -say\n', inline=False)
         emb.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
         await bot.send_message(message.channel, embed=emb)
-        if message.content.startswith('-list 2'):
+    if message.content.startswith('-list 2'):
         emb = discord.Embed(title='MY COMMANDS:', description="Hey, check out my commands!", colour=0x3498db)
         emb.add_field(name='--------------------', value=':small_blue_diamond: -time\n'
                             ':white_small_square: -mod\n'
