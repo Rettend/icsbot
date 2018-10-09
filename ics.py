@@ -12,6 +12,7 @@ member = discord.Member
 user = discord.User
 Imox = ["365173881952272384"]
 permissions = discord.Permissions
+PRserver = bot.get_server(id="481821925715214338")
 underworking = ":warning: **Meh Boi, this command hasn't finished. Please wait until it's got.** :warning:"
 """timer = time.strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())"""
 #--------------------------------------------
@@ -40,13 +41,13 @@ async def suggest(ctx, pref=None, *, text=None):
     else:
         try:
             if pref is "S":
-                msg = "𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
+                msg = "SUGGESTION"
             if pref is "Q":
-                msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
+                msg = "QUESTION"
             if pref is "C":
-                msg = "𝓒𝓸𝓶𝓶𝓪𝓷𝓭 𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
+                msg = "COMMAND SUGGESTION"
             if pref is "B":
-                msg = "𝓑𝓾𝓰𝓼"
+                msg = "BUGS"
             else:
                 bot.say("**Please use a valid prefix! The available prefixes: __Q__, __S__, __C__, __B__**")
         finally:
@@ -111,7 +112,7 @@ async def unban(ctx, user : discord.User=None, *, Reason=None):
                 await bot.unban(ctx.message.server, user)
                 LogRoom = bot.get_channel(id="483373250114748446")
                 await bot.say(f"**{user.mention} got unbanned by {ctx.message.author.mention} for __{Reason}__\nSee the logs in {LogRoom.mention}**")
-                em = discord.Embed(title="╲⎝⧹𝓤𝓝𝓑𝓐𝓝⧸⎠╱", description=None, colour=0xe91e63)
+                em = discord.Embed(title="UNBAN", description=None, colour=0xe91e63)
                 em.add_field(name="User", value=f"{user.mention}")
                 em.add_field(name="Moderator", value=f"{ctx.message.author}")
                 em.add_field(name="Reason", value=f"{Reason}")
@@ -139,7 +140,7 @@ async def ban(ctx, user : discord.User=None, Day : int=None, *, Reason=None):
             await bot.ban(user, delete_message_days=Day)
             LogRoom = bot.get_channel(id="483373250114748446")
             await bot.say(f"**{user.mention} got banned by {ctx.message.author.mention} for __{Reason}__\nSee the logs in {LogRoom.mention}**")
-            em = discord.Embed(title="╲⎝⧹𝓑𝓐𝓝⧸⎠╱", description=None, colour=0xad1457)
+            em = discord.Embed(title="BAN", description=None, colour=0xad1457)
             em.add_field(name="User", value=f"{user.mention}")
             em.add_field(name="Moderator", value=f"{ctx.message.author}")
             em.add_field(name="Reason", value=f"{Reason}")
@@ -166,7 +167,7 @@ async def kick(ctx, user : discord.User=None, *, Reason=None):
             await bot.kick(user)
             LogRoom = bot.get_channel(id="483373250114748446")
             await bot.say(f"**{user.mention} got Kicked by {ctx.message.author.mention} for __{Reason}__\nSee the logs in {LogRoom.mention}**")
-            em = discord.Embed(title="╲⎝⧹𝓚𝓘𝓒𝓚⧸⎠╱", description=None, colour=0xe74c3c)
+            em = discord.Embed(title="KICK", description=None, colour=0xe74c3c)
             em.add_field(name="User", value=f"{user.mention}")
             em.add_field(name="Moderator", value=f"{ctx.message.author}")
             em.add_field(name="Reason", value=f"{Reason}")
@@ -195,7 +196,7 @@ async def mute(ctx, user : discord.User=None, duration : int=None, *, Reason=Non
             MutedRole = discord.utils.get(ctx.message.server.roles, name="Muted")
             await bot.add_roles(user, MutedRole)
             await bot.say(f"**{user.mention} got Muted (for {duration} sec) by {ctx.message.author.mention} for __{Reason}__\nSee the logs in {LogRoom.mention}**")
-            em = discord.Embed(title="╲⎝⧹𝓜𝓤𝓣𝓔⧸⎠╱", description=None, colour=0x11806a)
+            em = discord.Embed(title="MUTE", description=None, colour=0x11806a)
             em.add_field(name="User", value=f"{user.mention}")
             em.add_field(name="Moderator", value=f"{ctx.message.author}")
             em.add_field(name="Reason", value=f"{Reason}")
@@ -208,7 +209,7 @@ async def mute(ctx, user : discord.User=None, duration : int=None, *, Reason=Non
             await bot.send_message(Private, f"**`Server: {PRserver}`\nRoses are red, violets are blue and {user.mention} is muted!**")
             await asyncio.sleep(duration)
             await bot.remove_roles(user, MutedRole)
-            em = discord.Embed(title="╲⎝⧹𝓤𝓝𝓜𝓤𝓣𝓔⧸⎠╱", description=None, colour=0x1abc9c)
+            em = discord.Embed(title="UNMUTE", description=None, colour=0x1abc9c)
             em.add_field(name="User", value=f"{user.mention}")
             em.add_field(name="Moderator", value=f"{ctx.message.author}")
             em.add_field(name="Reason", value="Time is up...")
@@ -235,7 +236,7 @@ async def unmute(ctx, user : discord.User=None, *, Reason=None):
             MutedRole = discord.utils.get(ctx.message.server.roles, name="Muted")
             await bot.remove_roles(user, MutedRole)
             await bot.say(f"**{user.mention} got UnMuted (he he) by {ctx.message.author.mention} for __{Reason}__\nSee the logs in {LogRoom.mention}**")
-            em = discord.Embed(title="╲⎝⧹𝓤𝓝𝓜𝓤𝓣𝓔⧸⎠╱", description=None, colour=0x1abc9c)
+            em = discord.Embed(title="UNMUTE", description=None, colour=0x1abc9c)
             em.add_field(name="User", value=f"{user.mention}")
             em.add_field(name="Moderator", value=f"{ctx.message.author}")
             em.add_field(name="Reason", value=f"{Reason}")
@@ -258,7 +259,7 @@ async def lock(ctx, duration : int=None, *, Reason=None):
         await bot.edit_channel_permissions(ctx.message.channel, Registered, overwrite)
         await bot.send_message(ctx.message.channel, f"**{ctx.message.channel.mention} is now locked for __{Reason}__**")
         LogRoom = bot.get_channel(id="483373250114748446")
-        em = discord.Embed(title="╲⎝⧹𝓛𝓞𝓒𝓚⧸⎠╱", description=None, colour=0x1f8b4c)
+        em = discord.Embed(title="LOCK", description=None, colour=0x1f8b4c)
         em.add_field(name="Channel", value=f"{ctx.message.channel.mention}")
         em.add_field(name="Moderator", value=f"{ctx.message.author}")
         em.add_field(name="Reason", value=f"{Reason}")
@@ -273,7 +274,7 @@ async def lock(ctx, duration : int=None, *, Reason=None):
         await bot.edit_channel_permissions(ctx.message.channel, Registered, overwrite)
         await bot.send_message(ctx.message.channel, f"**{ctx.message.channel.mention} is now unlocked for __{Reason}__**")
         LogRoom = bot.get_channel(id="483373250114748446")
-        em = discord.Embed(title="╲⎝⧹𝓤𝓝𝓛𝓞𝓒𝓚⧸⎠╱", description=None, colour=0x2ecc71)
+        em = discord.Embed(title="UNLOCK", description=None, colour=0x2ecc71)
         em.add_field(name="Channel", value=f"{ctx.message.channel.mention}")
         em.add_field(name="Moderator", value=f"{ctx.message.author}")
         em.add_field(name="Reason", value=f"{Reason}")
@@ -294,7 +295,7 @@ async def unlock(ctx, *, Reason=None):
         await bot.edit_channel_permissions(ctx.message.channel, Registered, overwrite)
         await bot.send_message(ctx.message.channel, f"**{ctx.message.channel.mention} is now unlocked for __{Reason}__**")
         LogRoom = bot.get_channel(id="483373250114748446")
-        em = discord.Embed(title="╲⎝⧹𝓤𝓝𝓛𝓞𝓒𝓚⧸⎠╱", description=None, colour=0x2ecc71)
+        em = discord.Embed(title="UNLOCK", description=None, colour=0x2ecc71)
         em.add_field(name="Channel", value=f"{ctx.message.channel.mention}")
         em.add_field(name="Moderator", value=f"{ctx.message.author}")
         em.add_field(name="Reason", value=f"{Reason}")
